@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import service from '@/NativeService';
-import { ElButton, ElDescriptions, ElDescriptionsItem, ElDivider, ElInput, ElNotification } from 'element-plus';
+import { ElButton, ElDescriptions, ElDescriptionsItem, ElDivider, ElInput, ElLink, ElNotification } from 'element-plus';
 import { Platfrom } from '@/types';
 
 const localFile = ref("")
@@ -54,14 +54,14 @@ var saveContent = () => {
         <ElDescriptionsItem label="本地IP">{{ service.getLocalIp() }}</ElDescriptionsItem>
         <ElDescriptionsItem label="软件版本">{{ service.version }}</ElDescriptionsItem>
         <ElDescriptionsItem label="当前App目录">
-          <ElButton type="primary" text style="padding: 0;" @click="service.showInFolder(service.getAppPath())">{{
+          <ElLink type="primary" @click="service.showInFolder(service.getAppPath())">{{
             service.getAppPath()
-            }}</ElButton>
+            }}</ElLink>
         </ElDescriptionsItem>
         <ElDescriptionsItem label="用户数据目录">
-          <ElButton type="primary" text style="padding: 0;" @click="service.showInFolder(service.getPathUserData())">{{
+          <ElLink type="primary" @click="service.showInFolder(service.getPathUserData())">{{
             service.getPathUserData() }}
-          </ElButton>
+          </ElLink>
         </ElDescriptionsItem>
       </ElDescriptions>
 
