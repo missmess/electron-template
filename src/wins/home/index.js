@@ -1,5 +1,6 @@
 const { BrowserWindow, screen } = require('electron')
 const path = require('path')
+const Constants = require('../../core/constants')
 
 function createMainWindow (args) {
   // 获取主屏幕的尺寸
@@ -21,10 +22,10 @@ function createMainWindow (args) {
     window.show()
   })
 
-  if (process.env.localRender == '1') {
+  if (Constants.localRender) {
     window.loadFile('www/index.html')
   } else {
-    window.loadURL(process.env.baseUrl)
+    window.loadURL(Constants.baseUrl)
   }
 
   window.on('close', () => {

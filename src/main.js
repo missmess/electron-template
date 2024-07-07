@@ -1,7 +1,5 @@
 // Modules to control application life and create native browser window
 const { app } = require('electron')
-require('dotenv').config()
-
 const wm = require('./core/windowManager')
 require('./core/eventHandler')
 require('./core/appMenus')

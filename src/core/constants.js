@@ -6,4 +6,6 @@ const pkg = require("../../package.json");
 module.exports = {
   version: forge.packagerConfig.appVersion,
   homepage: pkg.homepage,
+  localRender: forge.envConfig.localRender,
+  baseUrl: forge.envConfig.baseUrl
 };

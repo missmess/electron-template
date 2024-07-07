@@ -1,5 +1,6 @@
 const { BrowserWindow } = require('electron')
 const path = require('path')
+const Constants = require('../../core/constants')
 
 function createSettingWindow (args) {
   const window = new BrowserWindow({
@@ -16,12 +17,12 @@ function createSettingWindow (args) {
     }
   })
 
-  if (process.env.localRender == '1') {
+  if (Constants.localRender) {
     window.loadFile('www/index.html', {
       hash: 'setting'
     })
   } else {
-    window.loadURL(process.env.baseUrl + '#setting')
+    window.loadURL(Constants.baseUrl + '#setting')
   }
 
   return window

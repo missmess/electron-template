@@ -12,7 +12,7 @@
 - 已包含基础菜单配置：`src/core/appMenu`
 - 使用windowManager管理窗口，清晰易用，易配置：`src/WindowManifest`
 - 默认包含主窗口和一个设置窗口，满足80%的桌面端场景。
-- 支持webUI的本地/远程渲染模式，一键修改：`.env`
+- 支持webUI的本地/远程渲染模式，一键配置：`forge.config.js`
 - 默认启用沙盒模式，保护程序安全。
 - 已封装常用原生api，并导出到web端。
 
@@ -34,8 +34,6 @@ webapps - 存放webUI项目，可以有多个
 
 www - 打包后的webUI代码，程序会加载这个目录下的html
 
-.env - 环境变量
-
 forge.config.js - [forge的配置文件，包括打包、编译插件等](https://www.electronforge.io/)
 
 ## 如何使用
@@ -51,11 +49,16 @@ yarn
 cd webapps/vue3-webapp && yarn
 ```
 
-2. 确保`/.env`，启用的是远程渲染模式
+2. 确保`forge.config.js`中，启用的是远程渲染模式
 
-```
-# 0-远程渲染模式，从baseUrl读取
-localRender=0
+```javascript
+module.exports = {
+  envConfig: {
+    localRender: false,
+    ...
+  },
+  ...
+}
 ```
 
 3. 启动webUI。
@@ -72,11 +75,16 @@ yarn start
 
 ### 打包
 
-1. 确保`/.env`，启用的是本地渲染模式
+1. 确保`forge.config.js`中，启用的是本地渲染模式
 
-```
-# 1-本地渲染模式，读取/www目录
-localRender=1
+```javascript
+module.exports = {
+  envConfig: {
+    localRender: true,
+    ...
+  },
+  ...
+}
 ```
 
 2. 打包webUI到`/www`目录。
